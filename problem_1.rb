@@ -40,4 +40,4 @@ end
 
 combined = threes + fives
 
-p combined.inject {|sum, n| sum + n})
+p combined.inject {|sum, n| sum + n}
