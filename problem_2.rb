@@ -25,8 +25,7 @@ end
 evens = []
 fibs_array(34).each do |number|
   if (number%2) == 0
-    evens.push (number)
-  else
+    evens << number
   end
 end
 # p evens [3524578, 832040, 196418, 46368, 10946, 2584, 610, 144, 34, 8, 2]

@@ -9,12 +9,12 @@ fives = []
 #if a number is cleanly divisible by 3 with no remainder, we add it to threes, and 5 to fives. Otherwise we leave it.
 
 p1= array.each do |number|
-      if (number%3)==0 
-        threes.push (number)
-      elsif (number%5)==0
-        fives.push (number)
-      end
-    end
+  if (number%3)==0 
+    threes.push (number)
+  elsif (number%5)==0
+    fives.push (number)
+  end
+end
 #threes = [3, 6, 9]
 #fives = [5]
 
