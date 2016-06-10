@@ -1,3 +1,4 @@
+#Write a method that returns a prime number's factors.
 require 'prime'
 
 def calculate_prime_factors_of(number)
