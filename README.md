@@ -6,4 +6,4 @@ The following solutions are written in Ruby. They should not be used before exhu
 
 ***Currently includes:***
 
-Problems (1..5)
+Problems (1..8)
