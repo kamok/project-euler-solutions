@@ -56,6 +56,6 @@ def calculate_max_palindrome(digits)
 	
 end
 
-calculate_max_palindrome(5)
+calculate_max_palindrome(4)
 
 #use num*num as a lower bound for all iterations of num * num - n

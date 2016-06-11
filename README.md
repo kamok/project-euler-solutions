@@ -6,6 +6,8 @@ The following solutions are written in Ruby. They should not be used before exhu
 
 ***Currently includes:***
 
- 1. Problem 1
- 2. Problem 2
+Problem 1
+Problem 2
+Problem 3
+Problem 4
 
