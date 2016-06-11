@@ -30,28 +30,32 @@ def calculate_max_palindrome(digits)
 		break if is_number_palindromic?(possible_solution)
 		@lower_bound = num
 	end
-	
+
 	all_nums_above_lower_bound = @all_nums.reject { |x| @lower_bound >= x } 
 
+	possible_solution = 1
+	until all_nums_above_lower_bound.empty?
+		length = all_nums_above_lower_bound.length - 1
+		length.times do |count|
+			product = all_nums_above_lower_bound[0] * all_nums_above_lower_bound[count + 1]
+			if is_number_palindromic?(product)
+				@solution = product
+				break
+			end
+		end
+		all_nums_above_lower_bound.shift
+		break if @solution != nil
+	end
 
-	# @all_nums.each do |num|
-	# 	num.times do 
-	# 	p num
-	# 	break if num == @lower_bound
-	# # 	loop do 
-	# # 		p possible_solution = num * num - index
-	# # 		break if possible_solution < @lower_bound * @lower_bound
-	# # 	end
-	# end
-  
-	#999*998, 999*997, 999*996
-	#998*997, 998*996... 998*@lower_bound
-	#@lowerbound + 1 *
-
-
-	# @upper_bound.each do 
+	if digits == 1
+		puts "There ain't a palindrome that you can form with multiplyig single digit numbers."
+	else
+		p @solution if @solution > @lower_bound**2
+		p @lower_bound if @lower_bound > @solution
+	end
+	
 end
 
-calculate_max_palindrome(3)
+calculate_max_palindrome(5)
 
 #use num*num as a lower bound for all iterations of num * num - n
