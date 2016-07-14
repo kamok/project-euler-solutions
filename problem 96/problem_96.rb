@@ -19,7 +19,7 @@ a = Sudoku.new
 pile_of_puzzles.each_with_index do |puzzle, index|
 	a.set_game(puzzle)
 	solved_puzzles << a.solve
-	p "Solving puzzle #{index}"
+	p "Solving puzzle #{index+1}"
 end
 
 p solved_puzzles.map { |solved| solved[0..2].to_i }.sum
