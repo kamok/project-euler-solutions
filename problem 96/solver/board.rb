@@ -33,7 +33,7 @@ class Board
   end
 
   def solve!
-    display_board
+    # display_board
     return false unless valid?
     if solved?
       update_array_representation
