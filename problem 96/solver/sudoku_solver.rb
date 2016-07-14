@@ -18,8 +18,7 @@ class Sudoku
       when false
         puts "This sudoku puzzle is invalid."
       else
-        puts "Congrats you cheater!"
-        puts "Here's your string #{answer.join}"
+        answer.join
       end
   end
 
@@ -32,8 +31,3 @@ class Sudoku
   end
 
 end
-
-a = Sudoku.new
-##the string below is world's hardest sudoku puzzle
-a.set_game("8000000000036000000700902000500070000000457000001000300010000680085000100900004008")
-a.solve
