@@ -16,9 +16,6 @@
 #Find all a, b pairs under 500 where a pythagorean triplet exist.
 include Math
 
-a = 1..500
-b = 1..500
-
 def triplet(sum)
   a = (sum*0.20).to_i..(sum/2)    #I don't know why the lower bound is 20% of sum. =(
   b = a
