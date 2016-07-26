@@ -19,11 +19,20 @@ include Math
 a = 1..500
 b = 1..500
 
-a.each do |a_num|
-  b.each do |b_num|
-    c_num = sqrt(a_num**2 + b_num**2)
-    if c_num % 1 == 0 && a_num + b_num + c_num == 1000
-      p a_num * b_num * c_num
+def triplet(sum)
+  a = (sum*0.20).to_i..(sum/2)    #I don't know why the lower bound is 20% of sum. =(
+  b = a
+  catch (:found) do
+    a.each do |a_num|
+      b.each do |b_num|
+        c_num = sqrt(a_num**2 + b_num**2)
+        if c_num % 1 == 0 && a_num + b_num + c_num == sum
+          p a_num * b_num * c_num
+          throw :found
+        end
+      end
     end
   end
 end
+
+triplet(1000)
