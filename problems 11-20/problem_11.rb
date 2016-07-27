@@ -26,15 +26,19 @@ a= '08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 a_grid = a.each_slice(20).to_a
 
 row_array = a.each_cons(4).to_a
-column_array = a_grid.transpose
+column_array = a_grid.transpose.flatten.each_cons(4).to_a
+
+def find_max(array)
+  max = 0
+  array.each { |sets| max = sets.inject(:*) if sets.inject(:*) > max }
+  max
+end
+
+p find_max(row_array + column_array)
+
 
 # puts (0..2).collect { |i| array[i][i] } 
 
-
-# Looks like another Sudoku-esque problem.
-# Generate arrays of columns, rows, and diagonals. 
-# Generate sets of conseucutive permutations. Eg, columns, every 3, get. Up and Down.
-# Iterate over all of them, find the one with the highest sum, hence highest product.
 
 #This is a method I wrote before I remember I used .each_cons() before and it does the same thing that I do.
 
