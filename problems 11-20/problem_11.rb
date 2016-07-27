@@ -23,6 +23,7 @@ a= '08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 
 # The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 # What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
+
 a_nested = a.each_slice(20).to_a
 
 row_array = [].tap do |row_array|
@@ -31,7 +32,16 @@ row_array = [].tap do |row_array|
   end
 end.flatten(1)
 
-column_array = a_nested.transpose.flatten.each_cons(4).to_a #this is wrong.
+column_array = [].tap do |column_array|
+  a_nested.transpose.each do |column|
+    column_array << column.each_cons(4).to_a
+  end
+end.flatten(1)
+
+
+
+
+#this is wrong.
 # l_diagonal_array = 
 # [].tap do |result|
 #   17.times.with_index do |n|
