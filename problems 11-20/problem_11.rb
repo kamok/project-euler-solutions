@@ -26,22 +26,18 @@ a= '08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 
 a_nested = a.each_slice(20).to_a
 
-row_array = [].tap do |row_array|
-  a_nested.each do |row|
-    row_array << row.each_cons(4).to_a
-  end
-end.flatten(1)
+def find_sets(structure_set)
+  [].tap do |result|
+    structure_set.each do |structure|
+      result << structure.each_cons(4).to_a
+    end
+  end.flatten(1)
+end
 
-column_array = [].tap do |column_array|
-  a_nested.transpose.each do |column|
-    column_array << column.each_cons(4).to_a
-  end
-end.flatten(1)
+#51267216
+row_array = find_sets(a_nested)
+column_array = find_sets(a_nested.transpose)
 
-
-
-
-#this is wrong.
 # l_diagonal_array = 
 # [].tap do |result|
 #   17.times.with_index do |n|
@@ -55,7 +51,7 @@ end.flatten(1)
 # p l_diagonal_array.each_cons(4).to_a
 
 ## finds max
-# (row_array + column_array).map { |set| set.inject(:*) }.max
+p (row_array + column_array).map { |set| set.inject(:*) }.max
 
 
 #This is a method I wrote before I remember I used .each_cons() before and it does the same thing that I do.
