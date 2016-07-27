@@ -5,5 +5,5 @@ The following solutions are written in Ruby. They should not be used before exhu
 **Caution:** Usage of these solutions will take away the pleasure of discovering the solutions on your own.
 
 ***Currently includes:***
-
-Problems (1..8)
+Problems 1-11
+Problem 96

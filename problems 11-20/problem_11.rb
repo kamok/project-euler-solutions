@@ -37,17 +37,17 @@ end
 row_array = find_sets(a_nested)
 column_array = find_sets(a_nested.transpose)
 
-l_diagonal_array = 
-[].tap do |result|
+l_diagonal_array =          # The middle diagonal is repeated twice.                    
+[].tap do |result|          # I once thought about using .uniq but it doesn't really matter so I took it out.
   17.times.with_index do |n|
     result << (0..n+3).collect { |i| a_nested[i+16-n][i]}
   end
   17.times.with_index do |n|
     result << (0..19-n).collect { |i| a_nested[i][i+n]}
   end
-end.uniq
+end 
 
-r_diagonal_array = 
+r_diagonal_array =          # Same here.
 [].tap do |result|
   17.times.with_index do |n|
     result << (0..n+3).collect { |i| a_nested.map(&:reverse)[i+16-n][i]}
@@ -55,7 +55,7 @@ r_diagonal_array =
   17.times.with_index do |n|
     result << (0..19-n).collect { |i| a_nested.map(&:reverse)[i][i+n]}
   end
-end.uniq
+end
 
 diagonal_array = find_sets(l_diagonal_array + r_diagonal_array )
 
