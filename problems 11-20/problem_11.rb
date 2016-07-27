@@ -24,17 +24,16 @@ a = '08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08'.split(" ").map
 # The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 # What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
 
-def ordered_permutations(array: [1,2,3], number: n) #this method takes in an array and a number and finds all permutations without disturbing the order
-  result = []
-  (array.count - (number - 1)).times do
-    result << array[0..(number-1)]
-    array.shift
+def ordered_permutations(array: [1,2,3], length: n) #takes in an array and a number and finds all permutations without disturbing the order
+  array = array.dup #so you don't change state of the original array                                   
+  [].tap do |result|
+    (array.count - (length - 1)).times do
+      result << array[0..(length-1)]
+      array.shift
+    end
   end
-  result
 end
-
-p ordered_permutations(array: a, number: 4)
-
+p ordered_permutations(array: a, length: 4)
 # Looks like another Sudoku-esque problem.
 # Generate arrays of columns, rows, and diagonals. 
 # Generate sets of conseucutive permutations. Eg, columns, every 3, get. Up and Down.
