@@ -25,7 +25,12 @@ a= '08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 # What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
 a_nested = a.each_slice(20).to_a
 
-row_array = a.each_cons(4).to_a                             #this is also wrong
+row_array = [].tap do |row_array|
+  a_nested.each do |row|
+    row_array << row.each_cons(4).to_a
+  end
+end.flatten(1)
+
 column_array = a_nested.transpose.flatten.each_cons(4).to_a #this is wrong.
 # l_diagonal_array = 
 # [].tap do |result|
@@ -39,7 +44,8 @@ column_array = a_nested.transpose.flatten.each_cons(4).to_a #this is wrong.
 
 # p l_diagonal_array.each_cons(4).to_a
 
-(row_array + column_array).map { |set| set.inject(:*) }.max
+## finds max
+# (row_array + column_array).map { |set| set.inject(:*) }.max
 
 
 #This is a method I wrote before I remember I used .each_cons() before and it does the same thing that I do.
