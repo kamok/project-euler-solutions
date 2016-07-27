@@ -23,22 +23,13 @@ a= '08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 
 # The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 # What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
+a_grid = a.each_slice(20).to_a
+
 row_array = a.each_cons(4).to_a
-# #get vertical 
-def get_array_as_columns(array: [1,2,3])
-   n = 0
-  [].tap do |result| 
-    20.times do 
-      result << [ array[n], array[n+20], array[n+40], array[n+60], array[n+80],
-                  array[n+100], array[n+120], array[n+140], array[n+160], array[n+180],
-                  array[n+200], array[n+220], array[n+240], array[n+260], array[n+280],
-                  array[n+300], array[n+320], array[n+340], array[n+360], array[n+380]]
-      n += 1 
-    end
-  end
-end
-column_array = get_array_as_columns(array: a).flatten.each_cons(4).to_a
-# #get diagonal
+column_array = a_grid.transpose
+
+# puts (0..2).collect { |i| array[i][i] } 
+
 
 # Looks like another Sudoku-esque problem.
 # Generate arrays of columns, rows, and diagonals. 
@@ -57,3 +48,18 @@ column_array = get_array_as_columns(array: a).flatten.each_cons(4).to_a
 #   end
 # end
 # row_array = ordered_permutations(array: a, length: 4)
+
+#This is a method I wrote before I learned about .transpose
+# def get_array_as_columns(array)
+#    n = 0
+#   [].tap do |result| 
+#     20.times do 
+#       result << [ array[n], array[n+20], array[n+40], array[n+60], array[n+80],
+#                   array[n+100], array[n+120], array[n+140], array[n+160], array[n+180],
+#                   array[n+200], array[n+220], array[n+240], array[n+260], array[n+280],
+#                   array[n+300], array[n+320], array[n+340], array[n+360], array[n+380]]
+#       n += 1 
+#     end
+#   end
+# end
+# column_array = get_array_as_columns(a).flatten.each_cons(4).to_a
