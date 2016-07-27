@@ -34,24 +34,33 @@ def find_sets(structure_set)
   end.flatten(1)
 end
 
-#51267216
 row_array = find_sets(a_nested)
 column_array = find_sets(a_nested.transpose)
 
-# l_diagonal_array = 
-# [].tap do |result|
-#   17.times.with_index do |n|
-#     result << (0..n+3).collect { |i| a_nested[i+16-n][i]}
-#   end
-#   17.times.with_index do |n|
-#     result << (0..19-n).collect { |i| a_nested[i][i+n]}
-#   end
-# end.uniq
+l_diagonal_array = 
+[].tap do |result|
+  17.times.with_index do |n|
+    result << (0..n+3).collect { |i| a_nested[i+16-n][i]}
+  end
+  17.times.with_index do |n|
+    result << (0..19-n).collect { |i| a_nested[i][i+n]}
+  end
+end.uniq
 
-# p l_diagonal_array.each_cons(4).to_a
+r_diagonal_array = 
+[].tap do |result|
+  17.times.with_index do |n|
+    result << (0..n+3).collect { |i| a_nested.map(&:reverse)[i+16-n][i]}
+  end
+  17.times.with_index do |n|
+    result << (0..19-n).collect { |i| a_nested.map(&:reverse)[i][i+n]}
+  end
+end.uniq
+
+diagonal_array = find_sets(l_diagonal_array + r_diagonal_array )
 
 ## finds max
-p (row_array + column_array).map { |set| set.inject(:*) }.max
+p (row_array + column_array + diagonal_array).map { |set| set.inject(:*) }.max
 
 
 #This is a method I wrote before I remember I used .each_cons() before and it does the same thing that I do.
