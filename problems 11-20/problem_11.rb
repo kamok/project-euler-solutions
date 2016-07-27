@@ -28,13 +28,8 @@ a_grid = a.each_slice(20).to_a
 row_array = a.each_cons(4).to_a
 column_array = a_grid.transpose.flatten.each_cons(4).to_a
 
-def find_max(array)
-  max = 0
-  array.each { |sets| max = sets.inject(:*) if sets.inject(:*) > max }
-  max
-end
 
-p find_max(row_array + column_array)
+p (row_array + column_array).map { |set| set.inject(:*) }.max
 
 
 # puts (0..2).collect { |i| array[i][i] } 
