@@ -15,7 +15,12 @@
 #   end
 # end
 
-# p result
+# p result #[506, 428, 443, 452, 503, 480, 474, 441, 446, 432..]
+
+TODO: 
+Write an algorithm that satisfy the below example.
+Apply method to result above. 
+
 
 # a = [7491,3156,6219,6159,6065,1569,6169,9879,6299,2688,1689,1068,1899,9999,9991,9999] #90339
 # p a.inject(:+)
