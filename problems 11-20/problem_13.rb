@@ -7,7 +7,7 @@ File.open("problem_13_data.txt", "r") do |f|
   end
 end
 
-p array_of_nums.inject(0) { |sum, num| sum + num }.to_s[0..9]
+p array_of_nums.inject(:+).to_s[0..9].to_i
 
 # below is how I would solve it if Bignum didn't exist in Ruby
 
