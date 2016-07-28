@@ -1,11 +1,15 @@
 # # Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
 
-# array_of_nums = []
-# File.open("problem_13_data.txt", "r") do |f|
-#   f.each_line do |line|
-#     array_of_nums << line.strip.split('').map(&:to_i)
-#   end
-# end
+array_of_nums = []
+File.open("problem_13_data.txt", "r") do |f|
+  f.each_line do |line|
+    array_of_nums << line.strip.to_i
+  end
+end
+
+p array_of_nums.inject(0) { |sum, num| sum + num }.to_s[0..9]
+
+# below is how I would solve it if Bignum didn't exist in Ruby
 
 # columns_of_numbers = array_of_nums.transpose
 
@@ -17,9 +21,9 @@
 
 # p result #[506, 428, 443, 452, 503, 480, 474, 441, 446, 432..]
 
-TODO: 
-Write an algorithm that satisfy the below example.
-Apply method to result above. 
+# TODO: 
+# Write an algorithm that satisfy the below example.
+# Apply method to result above. 
 
 
 # a = [7491,3156,6219,6159,6065,1569,6169,9879,6299,2688,1689,1068,1899,9999,9991,9999] #90339
