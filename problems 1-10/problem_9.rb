@@ -24,6 +24,7 @@ def triplet(sum)
       b.each do |b_num|
         c_num = sqrt(a_num**2 + b_num**2)
         if c_num % 1 == 0 && a_num + b_num + c_num == sum
+          puts "a:#{a_num}, b:#{b_num}, c:#{c_num.to_i}"
           p a_num * b_num * c_num
           throw :found
         end
