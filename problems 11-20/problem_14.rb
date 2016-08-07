@@ -39,15 +39,13 @@
 # Only instansiate one chain at a time, and check the count of the chain against each other.
 # Keep highest one, return the first number of the chain that remains 
 # 
-# solution = []
-# (1..1_000_000).to_enum.each do |num|
-#   current_chain = []
-#   until num <= 1
-#     current_chain << num
-#     num = num.even? ? num / 2 : (num * 3 ) + 1
-#   end 
-#   solution = current_chain if current_chain.length > solution.length
-# end
-# puts solution.first
-
-#This solution is 15.7 seconds... is .even? faster or % 2 == true
+solution = []
+(1..1_000_000).to_enum.each do |num|
+  current_chain = []
+  until num <= 1
+    current_chain << num
+    num = num.even? ? num / 2 : (num * 3 ) + 1
+  end 
+  solution = current_chain if current_chain.length > solution.length
+end
+puts solution.first
