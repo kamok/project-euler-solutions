@@ -39,13 +39,57 @@
 # Only instansiate one chain at a time, and check the count of the chain against each other.
 # Keep highest one, return the first number of the chain that remains 
 # 
-solution = []
-(1..1_000_000).to_enum.each do |num|
-  current_chain = []
-  until num <= 1
-    current_chain << num
-    num = num.even? ? num / 2 : (num * 3 ) + 1
-  end 
-  solution = current_chain if current_chain.length > solution.length
+# solution = []
+# (1..1_000_000).to_enum.each do |num|
+#   current_chain = []
+#   until num <= 1
+#     current_chain << num
+#     num = num.even? ? num / 2 : (num * 3 ) + 1
+#   end 
+#   solution = current_chain if current_chain.length > solution.length
+# end
+# puts solution.first
+
+# This is the best approach using a dictionary to keep track
+# Of previously calculated counts. 
+class Problem13
+  attr_reader :cache, :top
+
+  def initialize(top)
+    @cache = { 1 => 1 }
+    @top = top
+  end
+
+  def compute
+    max_count = 0
+    max_value = nil
+
+    (1..top).each do |n|
+      count = lookup(n)
+
+      if count > max_count
+        max_count = count
+        max_value = n
+      end
+    end
+    [max_value, max_count]
+  end
+
+  protected
+
+  # Let's use a recursive approach
+  def lookup(value)
+    count = cache[value]
+    return count if count
+
+    # If it's not present, compute it until we reach a known value
+    cache[value] = 1 + lookup(rule(value))
+  end
+
+  def rule(n)
+    return n if n <= 1
+    n.even? ? (n / 2) : (3 * n) + 1
+  end
 end
-puts solution.first
+
+p Problem13.new(1_000_000).compute
